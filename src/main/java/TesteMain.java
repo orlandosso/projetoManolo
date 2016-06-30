@@ -34,8 +34,7 @@ public class TesteMain {
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]";
 	
 	public static void main(String[] args) {
-	    //System.out.println(getSomaMediaIniciacaoETempoExecucao("01:00:00"));
-	    System.out.println(240000L/235959L);
+	    System.out.println(parseData("06:00.000", "HH:mm:ss.sss"));
 	}
 	
 	

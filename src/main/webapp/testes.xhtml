@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+</h:head>
+<h:body>
+	<h1>Hello World PrimeFaces</h1>
+    
+    <h:form>
+    
+    <p:ajaxStatus onstart="statusDialog.show()" onsuccess="statusDialog.hide()" />
+ 
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+	    <p:graphicImage name="/imagens/loading.gif" />
+	</p:dialog>
+    
+    <h:panelGroup id="painelBig">
+			<p:outputLabel value="Big:" for="big" />
+			
+			<p:inputText value="#{testeView.listaValorNotaCaixa[1]}" id="big">
+				
+				<f:convertNumber pattern="#0.00" locale="pt_BR"
+								minFractionDigits="2" />
+				<p:ajax event="blur" process="@([id$=painelBig])"
+					update="@([id$=painelBig])"
+					listener="#{testeView.grava()}" />
+			</p:inputText>
+
+			<p:commandLink id="grava" value="Gravar"
+				actionListener="#{testeView.grava()}" ajax="true" update="@form" />
+
+		</h:panelGroup>
+	
+	<div style="display: block; height: 20px">
+	</div>
+</h:form>
+</h:body>
+</html>
